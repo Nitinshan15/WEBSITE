@@ -1547,6 +1547,69 @@ body {
     max-width: 600px;
 }
 
+/* Special Modal Styles */
+.special-modal-content {
+    max-width: 1000px;
+    max-height: 90vh;
+    padding: 0;
+    overflow: hidden;
+}
+
+.special-modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 70vh;
+    min-height: 500px;
+}
+
+#specialModalImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.special-modal-description {
+    padding: 2rem;
+    background: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+#specialModalTitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+#specialModalText {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    white-space: pre-line;
+}
+
+@media (max-width: 768px) {
+    .special-modal-body {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 600px;
+    }
+    
+    .special-modal-description {
+        padding: 1.5rem;
+    }
+    
+    #specialModalTitle {
+        font-size: 1.5rem;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hamburger {
@@ -1910,5 +1973,373 @@ body {
     
     .subjects-grid {
         justify-content: center;
+    }
+}
+
+/* ===========================
+   ACHIEVEMENTS PAGE STYLES
+   =========================== */
+
+/* Achievements Header */
+.achievements-header {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--text-light);
+    text-align: center;
+}
+
+.achievements-header .section-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.achievements-header .section-description {
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+/* Awards Gallery */
+.awards-gallery {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.awards-scroll-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.awards-horizontal-scroll {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2rem 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbar styling */
+.awards-horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.awards-horizontal-scroll::-webkit-scrollbar-track {
+    background: var(--bg-gray);
+    border-radius: 4px;
+}
+
+.awards-horizontal-scroll::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.awards-horizontal-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Award Item Styles */
+.award-item {
+    flex: 0 0 auto;
+    width: 450px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    background: #ffffff;
+}
+
+.award-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+.award-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    z-index: 2;
+}
+
+.award-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: var(--transition);
+    padding: 10px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.award-item:hover img {
+    transform: scale(1.02);
+}
+
+/* Award Overlay Styles for Special Recognitions */
+.award-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 20px 15px 15px;
+    transform: translateY(100%);
+    transition: var(--transition);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.award-item:hover .award-overlay {
+    transform: translateY(0);
+}
+
+.award-overlay h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+
+.award-overlay p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* Animation for award items */
+.award-item {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInFromRight 0.6s ease forwards;
+}
+
+.award-item:nth-child(1) { animation-delay: 0.1s; }
+.award-item:nth-child(2) { animation-delay: 0.2s; }
+.award-item:nth-child(3) { animation-delay: 0.3s; }
+.award-item:nth-child(4) { animation-delay: 0.4s; }
+.award-item:nth-child(5) { animation-delay: 0.5s; }
+.award-item:nth-child(6) { animation-delay: 0.6s; }
+.award-item:nth-child(7) { animation-delay: 0.7s; }
+.award-item:nth-child(8) { animation-delay: 0.8s; }
+.award-item:nth-child(9) { animation-delay: 0.9s; }
+.award-item:nth-child(10) { animation-delay: 1.0s; }
+
+@keyframes slideInFromRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design for Achievements */
+@media (max-width: 768px) {
+    .achievements-header {
+        padding: 100px 0 40px;
+    }
+    
+    .achievements-header .section-title {
+        font-size: 3.2rem;
+    }
+    
+    .achievements-header .section-description {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+    
+    .awards-scroll-container {
+        padding: 0 1rem;
+    }
+    
+    .awards-horizontal-scroll {
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+    }
+    
+    .award-item {
+        width: 350px;
+        height: 480px;
+    }
+}
+
+@media (max-width: 480px) {
+    .achievements-header .section-title {
+        font-size: 2.8rem;
+    }
+    
+    .awards-horizontal-scroll {
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+    
+    .award-item {
+        width: 280px;
+        height: 400px;
+    }
+}
+
+/* Image Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-xl);
+    background: #ffffff;
+    padding: 10px;
+}
+
+.close-button {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1005;
+    transition: var(--transition);
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.modal-navigation {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+    z-index: 1003;
+    transform: translateY(-50%);
+}
+
+.nav-btn {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    border: none;
+    font-size: 24px;
+    padding: 15px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    pointer-events: auto;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1004;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.modal.fade-out {
+    animation: fadeOut 0.3s ease;
+}
+
+/* Mobile Modal Styles */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 10px;
+        width: 95%;
+    }
+    
+    .modal-content img {
+        max-height: 80vh;
+        padding: 5px;
+    }
+    
+    .close-button {
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .nav-btn {
+        font-size: 20px;
+        padding: 10px 15px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .modal-navigation {
+        padding: 0 10px;
     }
 }
